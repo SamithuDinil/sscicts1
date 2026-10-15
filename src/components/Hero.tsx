@@ -70,32 +70,34 @@ export default function Hero() {
   return (
     <section ref={root} id="top" className="relative min-h-svh overflow-hidden">
       <div className="grid-bg absolute inset-0" />
-      <div className="pointer-events-none absolute top-[8%] right-[6%] h-[46vw] max-h-[620px] w-[46vw] max-w-[620px] rounded-full bg-visor/10 blur-[120px]" />
-      <div className="pointer-events-none absolute bottom-[-10%] left-[-8%] h-[40vw] max-h-[520px] w-[40vw] max-w-[520px] rounded-full bg-cobalt/10 blur-[120px]" />
+      <div className="pointer-events-none absolute top-[6%] right-[4%] h-[50vw] max-h-[680px] w-[50vw] max-w-[680px] rounded-full bg-visor/12 blur-[130px] animate-soft-pulse" />
+      <div className="pointer-events-none absolute bottom-[-12%] left-[-10%] h-[44vw] max-h-[560px] w-[44vw] max-w-[560px] rounded-full bg-cyber/10 blur-[130px]" />
+      <div className="pointer-events-none absolute top-[40%] left-[20%] h-40 w-40 rounded-full bg-cobalt/8 blur-[80px]" />
 
       <div className="pointer-events-none absolute inset-y-0 right-0 w-full lg:w-[52%]" aria-hidden="true">
         <div data-parallax-avatar className="absolute inset-0">
-          <div data-mouse-ring className="absolute right-[-18%] bottom-[10%] aspect-square w-[92vw] sm:right-[-6%] sm:w-[70vh] lg:right-[2%] lg:w-[76vh]">
-            <svg data-ring viewBox="0 0 400 400" className="h-full w-full animate-[spin-slow_80s_linear_infinite]">
-              <circle cx="200" cy="200" r="196" fill="none" stroke="#9cb07a" strokeOpacity="0.28" strokeWidth="1" />
-              <circle cx="200" cy="200" r="168" fill="none" stroke="#ffa629" strokeOpacity="0.5" strokeWidth="1.2" strokeDasharray="2 10" />
-              <circle cx="200" cy="200" r="140" fill="none" stroke="#4da8ff" strokeOpacity="0.28" strokeWidth="1" strokeDasharray="60 22" />
-              <path d="M200 4 v14 M200 382 v14 M4 200 h14 M382 200 h14" stroke="#ffa629" strokeWidth="2" />
+          <div data-mouse-ring className="absolute right-[-14%] bottom-[6%] aspect-square w-[90vw] sm:right-[-4%] sm:w-[68vh] lg:right-[0%] lg:w-[72vh]">
+            <svg data-ring viewBox="0 0 400 400" className="h-full w-full animate-[spin-slow_70s_linear_infinite]">
+              <circle cx="200" cy="200" r="196" fill="none" stroke="#22d3ee" strokeOpacity="0.22" strokeWidth="1" />
+              <circle cx="200" cy="200" r="168" fill="none" stroke="#ff9f1c" strokeOpacity="0.55" strokeWidth="1.4" strokeDasharray="3 9" />
+              <circle cx="200" cy="200" r="140" fill="none" stroke="#38bdf8" strokeOpacity="0.3" strokeWidth="1" strokeDasharray="50 18" />
+              <circle cx="200" cy="200" r="110" fill="none" stroke="#34d399" strokeOpacity="0.18" strokeWidth="0.8" strokeDasharray="8 14" />
+              <path d="M200 4 v14 M200 382 v14 M4 200 h14 M382 200 h14" stroke="#ff9f1c" strokeWidth="2.2" />
             </svg>
           </div>
           <div data-mouse-avatar className="absolute inset-0">
-            <div data-avatar className="absolute right-[-16%] bottom-0 h-[70svh] sm:right-[2%] lg:right-[6%] lg:h-[96svh]">
-              <div className="relative h-full">
+            <div data-avatar className="absolute right-[-8%] bottom-0 h-[72svh] sm:right-[4%] lg:right-[8%] lg:h-[92svh]">
+              <div className="relative h-full animate-avatar-enter">
                 <Image
                   src="/images/avatar.webp"
                   alt="Rinzler — Cypher ’27 avatar"
-                  width={572}
-                  height={1024}
+                  width={358}
+                  height={933}
                   priority
-                  sizes="(min-width: 1024px) 40vh, 30vh"
-                  className="h-full w-auto max-w-none object-contain object-bottom opacity-50 sm:opacity-80 drop-shadow-[0_0_60px_rgba(255,166,41,0.35)] lg:opacity-100"
+                  sizes="(min-width: 1024px) 38vh, 28vh"
+                  className="h-full w-auto max-w-none object-contain object-bottom opacity-60 sm:opacity-90 drop-shadow-[0_0_50px_rgba(255,159,28,0.45)] lg:opacity-100 animate-rim-light"
                 />
-                <span className="absolute top-[6%] left-[48%] h-5 w-5 -translate-x-1/2 -translate-y-1/2 animate-[visor-pulse_2.4s_ease-in-out_infinite] rounded-full bg-visor blur-xl" />
+                <span className="absolute top-[5%] left-[50%] h-6 w-6 -translate-x-1/2 -translate-y-1/2 animate-[visor-pulse_2.6s_ease-in-out_infinite] rounded-full bg-visor blur-xl" />
                 <div
                   className="absolute inset-0"
                   style={{
@@ -107,7 +109,7 @@ export default function Hero() {
                     WebkitMaskRepeat: "no-repeat",
                   }}
                 >
-                  <div className="absolute inset-x-0 top-0 h-[14%] animate-[scan_5s_linear_infinite] bg-gradient-to-b from-transparent via-visor/60 to-transparent" style={{ animationName: "scan-full" }} />
+                  <div className="absolute inset-x-0 top-0 h-[12%] animate-[scan_4.5s_linear_infinite] bg-gradient-to-b from-transparent via-visor/50 to-transparent" style={{ animationName: "scan-full" }} />
                 </div>
               </div>
             </div>

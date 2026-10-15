@@ -71,13 +71,20 @@ export default function Arenas() {
           <div className="relative col-span-5 flex h-full items-end justify-center">
             <div data-arena-avatar className="relative mb-10 h-[80svh]">
               <Image
-                src="/images/avatar.webp"
+                key={current.id}
+                src={
+                  current.category === "inter"
+                    ? current.id.includes("minecraft") || current.id.includes("video")
+                      ? "/images/rinzler-run.png"
+                      : "/images/rinzler-fight.png"
+                    : "/images/rinzler-stand.png"
+                }
                 alt="Rinzler"
                 width={572}
-                height={1024}
+                height={933}
                 sizes="40vh"
-                className="h-full w-auto max-w-none object-contain object-bottom transition-[filter] duration-700"
-                style={{ filter: `drop-shadow(0 0 46px ${current.color}66) drop-shadow(0 0 2px ${current.color})` }}
+                className="h-full w-auto max-w-none object-contain object-bottom transition-all duration-700 ease-out animate-arena-in"
+                style={{ filter: `drop-shadow(0 0 50px ${current.color}88) drop-shadow(0 0 4px ${current.color})` }}
               />
               <div className="absolute -top-2 -left-8 h-10 w-10 border-t-2 border-l-2 transition-colors duration-700" style={{ borderColor: current.color }} />
               <div className="absolute -right-8 -bottom-2 h-10 w-10 border-r-2 border-b-2 transition-colors duration-700" style={{ borderColor: current.color }} />

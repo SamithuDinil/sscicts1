@@ -12,7 +12,7 @@ export default function Preloader({ onDone }: { onDone: () => void }) {
 
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const steps = ["Loading armor systems", "Syncing arenas", "Opening registration", "Ready"];
+    const steps = ["Booting Rinzler systems", "Syncing arenas", "Opening registration", "Cypher ’27 ready"];
     const counter = { v: 0 };
 
     const ctx = gsap.context(() => {
