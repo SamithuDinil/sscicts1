@@ -72,11 +72,11 @@ export default function Arenas() {
             <div data-arena-avatar className="relative mb-10 h-[80svh]">
               <Image
                 src="/images/avatar.webp"
-                alt=""
-                width={553}
-                height={1387}
+                alt="Rinzler"
+                width={572}
+                height={1024}
                 sizes="40vh"
-                className="h-full w-auto max-w-none object-contain transition-[filter] duration-700"
+                className="h-full w-auto max-w-none object-contain object-bottom transition-[filter] duration-700"
                 style={{ filter: `drop-shadow(0 0 46px ${current.color}66) drop-shadow(0 0 2px ${current.color})` }}
               />
               <div className="absolute -top-2 -left-8 h-10 w-10 border-t-2 border-l-2 transition-colors duration-700" style={{ borderColor: current.color }} />
@@ -91,8 +91,11 @@ export default function Arenas() {
 
             <div className="min-w-0 flex-1">
               <div key={current.id} className="animate-arena-in">
-                <div className="flex items-center gap-3 transition-colors duration-700" style={{ color: current.color }}>
+                <div className="flex flex-wrap items-center gap-3 transition-colors duration-700" style={{ color: current.color }}>
                   <ArenaIcon icon={current.icon} className="h-6 w-6" />
+                  <span className="rounded-full border px-3 py-0.5 text-xs font-semibold uppercase tracking-wider" style={{ borderColor: `${current.color}88`, color: current.color }}>
+                    {current.category === "inter" ? "Inter-school" : "Intra-school"}
+                  </span>
                   <span className="font-display text-lg font-semibold">{current.status}</span>
                   {current.date && <span className="font-display text-lg text-mute">{current.date}</span>}
                 </div>
@@ -144,8 +147,10 @@ export default function Arenas() {
       </div>
 
       <div className="mx-auto max-w-7xl px-6 py-24 lg:hidden motion-reduce:block">
-        <Heading className="text-5xl sm:text-6xl">Four ways to compete</Heading>
-        <p className="mt-5 max-w-xl text-lg text-mute">Pick the arena that fits your skills, or enter more than one.</p>
+        <Heading className="text-5xl sm:text-6xl">Eight ways to compete</Heading>
+        <p className="mt-5 max-w-xl text-lg text-mute">
+          Inter-school &amp; Intra-school arenas. Pick the one that fits your skills, or enter more than one. All registrations via this site.
+        </p>
         <ul className="mt-12 grid gap-5 md:grid-cols-2">
           {arenas.map((arena) => (
             <li
@@ -153,8 +158,11 @@ export default function Arenas() {
               className="clip-hud relative border border-line bg-panel/70 p-7"
               style={{ boxShadow: `inset 3px 0 0 ${arena.color}` }}
             >
-              <div className="flex items-center gap-3" style={{ color: arena.color }}>
+              <div className="flex flex-wrap items-center gap-2" style={{ color: arena.color }}>
                 <ArenaIcon icon={arena.icon} className="h-5 w-5" />
+                <span className="rounded-full border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider" style={{ borderColor: `${arena.color}88` }}>
+                  {arena.category === "inter" ? "Inter" : "Intra"}
+                </span>
                 <span className="font-display text-base font-semibold">{arena.status}</span>
                 {arena.date && <span className="font-display text-base text-mute">{arena.date}</span>}
               </div>

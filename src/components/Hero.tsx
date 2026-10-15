@@ -88,14 +88,14 @@ export default function Hero() {
               <div className="relative h-full">
                 <Image
                   src="/images/avatar.webp"
-                  alt="Armored soldier avatar"
-                  width={553}
-                  height={1387}
+                  alt="Rinzler — Cypher ’27 avatar"
+                  width={572}
+                  height={1024}
                   priority
                   sizes="(min-width: 1024px) 40vh, 30vh"
-                  className="h-full w-auto max-w-none object-contain opacity-40 sm:opacity-70 drop-shadow-[0_0_60px_rgba(255,166,41,0.22)] lg:opacity-100"
+                  className="h-full w-auto max-w-none object-contain object-bottom opacity-50 sm:opacity-80 drop-shadow-[0_0_60px_rgba(255,166,41,0.35)] lg:opacity-100"
                 />
-                <span className="absolute top-[7%] left-[40%] h-6 w-6 -translate-x-1/2 -translate-y-1/2 animate-[visor-pulse_2.4s_ease-in-out_infinite] rounded-full bg-visor blur-xl" />
+                <span className="absolute top-[6%] left-[48%] h-5 w-5 -translate-x-1/2 -translate-y-1/2 animate-[visor-pulse_2.4s_ease-in-out_infinite] rounded-full bg-visor blur-xl" />
                 <div
                   className="absolute inset-0"
                   style={{
@@ -116,14 +116,14 @@ export default function Hero() {
 
         <div className="absolute top-[18%] right-[46%] hidden lg:block" data-callout>
           <div className="border-l border-visor pl-3">
-            <p className="font-display text-sm font-semibold text-visor">Visor online</p>
-            <p className="text-sm text-mute">Four arenas open</p>
+            <p className="font-display text-sm font-semibold text-visor">Rinzler online</p>
+            <p className="text-sm text-mute">8 competitions live</p>
           </div>
         </div>
         <div className="absolute bottom-[26%] left-[2%] hidden lg:block" data-callout>
           <div className="border-l border-cobalt pl-3">
             <p className="font-display text-sm font-semibold text-cobalt">Next up</p>
-            <p className="text-sm text-mute">Gaming Zone, Oct 24</p>
+            <p className="text-sm text-mute">Cypher ’27 · Feb 2027</p>
           </div>
         </div>
       </div>
@@ -131,14 +131,14 @@ export default function Hero() {
       <div className="relative mx-auto flex min-h-svh max-w-7xl items-center px-6">
         <div data-parallax-text className="z-10 max-w-3xl pt-28 pb-24">
           <p data-fade className="mb-6 font-display text-base font-medium text-armor sm:text-lg">
-            Sri Sumangala College ICT Society
+            Sri Sumangala College ICT Society · Cypher ’27
           </p>
           <h1 className="font-display text-[clamp(3.4rem,10.5vw,9rem)] leading-[0.92] font-bold tracking-tighter">
             <span className="line-mask"><span data-line>Choose</span></span>
             <span className="line-mask"><span data-line>your arena.</span></span>
           </h1>
           <p data-fade className="mt-8 max-w-xl text-lg leading-relaxed text-mute sm:text-xl">
-            Gaming, quiz, graphic design and Word advertisement competitions, organised by students for students.
+            Inter-school &amp; Intra-school competitions — Video Editing, Web Design, Graphic Design, Minecraft, Word Ads &amp; AI Ads. Register on this site.
           </p>
           <div data-fade className="mt-10 flex flex-wrap items-center gap-4">
             <Magnetic>

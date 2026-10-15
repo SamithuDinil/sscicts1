@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, type ElementType, type ReactNode } from "react";
-import { Gamepad2, Brain, Palette, Type } from "lucide-react";
+import { Gamepad2, Brain, Palette, Type, Video, Globe, Sparkles, PenTool } from "lucide-react";
 import { gsap, ScrollTrigger, SplitText } from "@/lib/gsap";
 import type { Arena } from "@/lib/data";
 
@@ -9,7 +9,16 @@ const finePointer = () => window.matchMedia("(pointer: fine)").matches;
 const reducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 export function ArenaIcon({ icon, className }: { icon: Arena["icon"]; className?: string }) {
-  const map = { gamepad: Gamepad2, brain: Brain, palette: Palette, type: Type };
+  const map = {
+    gamepad: Gamepad2,
+    brain: Brain,
+    palette: Palette,
+    type: Type,
+    video: Video,
+    web: Globe,
+    sparkles: Sparkles,
+    pen: PenTool,
+  };
   const Icon = map[icon];
   return <Icon className={className} aria-hidden="true" />;
 }

@@ -10,13 +10,13 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://sscicts.vercel.app"
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: { default: "SSCICTS | Sri Sumangala College ICT Society", template: "%s | SSCICTS" },
+  title: { default: "SSCICTS · Cypher ’27 | Sri Sumangala College ICT Society", template: "%s | SSCICTS" },
   description:
-    "Gaming, quiz, graphic design and Word advertisement competitions by the Sri Sumangala College ICT Society. Register and choose your arena.",
+    "Cypher ’27 — Inter-school & Intra-school competitions: Video Editing, Web Designing, Graphic Designing, Minecraft, Word Ads & AI Ads. Register on this site.",
   icons: { icon: "/logo.png", apple: "/logo.png" },
   openGraph: {
-    title: "SSCICTS | Choose your arena",
-    description: "Gaming, quiz, graphic design and Word advertisement competitions by students for students.",
+    title: "SSCICTS · Cypher ’27 | Choose your arena",
+    description: "Inter & Intra school competitions by the Sri Sumangala College ICT Society. Register via the website.",
     type: "website",
     siteName: "SSCICTS",
   },

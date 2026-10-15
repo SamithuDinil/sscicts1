@@ -128,11 +128,11 @@ export default function RegisterModal({
 
             <fieldset>
               <legend className="mb-2 text-sm text-mute">Competition</legend>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
                 {arenas.map((item) => (
                   <label
                     key={item.id}
-                    className="cursor-pointer border px-4 py-3 text-center font-display text-[15px] font-semibold transition-colors has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-visor"
+                    className="cursor-pointer border px-3 py-3 text-center font-display text-[13px] font-semibold leading-tight transition-colors has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-visor"
                     style={
                       item.id === selected
                         ? { borderColor: item.color, color: item.color, background: `${item.color}1a` }
@@ -147,6 +147,9 @@ export default function RegisterModal({
                       onChange={() => setSelected(item.id)}
                       className="sr-only"
                     />
+                    <span className="block text-[10px] opacity-70 uppercase tracking-wide">
+                      {item.category === "inter" ? "Inter" : "Intra"}
+                    </span>
                     {item.short}
                   </label>
                 ))}
