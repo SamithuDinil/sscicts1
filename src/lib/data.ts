@@ -225,7 +225,12 @@ export const gallery = [
 export const contact = {
   email: "contact@sscits.com",
   address: "Sri Sumangala College, Wakada, Panadura",
-  socials: [] as { label: string; href: string }[],
+  socials: [
+    { label: "Instagram", href: "https://instagram.com/sscicts", icon: "instagram" as const },
+    { label: "Facebook", href: "https://facebook.com/sscicts", icon: "facebook" as const },
+    { label: "YouTube", href: "https://youtube.com/@sscicts", icon: "youtube" as const },
+    { label: "WhatsApp", href: "https://wa.me/94770000000", icon: "whatsapp" as const },
+  ],
 };
 
 export const nav = [

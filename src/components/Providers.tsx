@@ -17,8 +17,12 @@ import Cursor from "./Cursor";
 import ScrollProgress from "./ScrollProgress";
 import RegisterModal from "./RegisterModal";
 
+type Theme = "dark" | "light";
+
 type AppContext = {
   ready: boolean;
+  theme: Theme;
+  toggleTheme: () => void;
   openRegister: (arenaId?: string) => void;
   scrollTo: (target: string | number) => void;
   lock: () => () => void;
@@ -32,11 +36,44 @@ export function useApp() {
   return value;
 }
 
+function getInitialTheme(): Theme {
+  if (typeof window === "undefined") return "dark";
+  try {
+    const stored = localStorage.getItem("sscicts-theme") as Theme | null;
+    if (stored === "light" || stored === "dark") return stored;
+  } catch {
+    /* ignore */
+  }
+  return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+}
+
 export default function Providers({ children }: { children: ReactNode }) {
   const [ready, setReady] = useState(false);
+  const [theme, setTheme] = useState<Theme>("dark");
   const [lockCount, setLockCount] = useState(0);
   const [register, setRegister] = useState<{ open: boolean; arenaId?: string }>({ open: false });
   const lenisRef = useRef<Lenis | null>(null);
+
+  useEffect(() => {
+    const initial = getInitialTheme();
+    setTheme(initial);
+    document.documentElement.classList.remove("dark", "light");
+    document.documentElement.classList.add(initial);
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.classList.remove("dark", "light");
+    document.documentElement.classList.add(theme);
+    try {
+      localStorage.setItem("sscicts-theme", theme);
+    } catch {
+      /* ignore */
+    }
+  }, [theme]);
+
+  const toggleTheme = useCallback(() => {
+    setTheme((t) => (t === "dark" ? "light" : "dark"));
+  }, []);
 
   useEffect(() => {
     if ("scrollRestoration" in history) history.scrollRestoration = "manual";
@@ -110,8 +147,8 @@ export default function Providers({ children }: { children: ReactNode }) {
   const openRegister = useCallback((arenaId?: string) => setRegister({ open: true, arenaId }), []);
 
   const value = useMemo(
-    () => ({ ready, openRegister, scrollTo, lock }),
-    [ready, openRegister, scrollTo, lock],
+    () => ({ ready, theme, toggleTheme, openRegister, scrollTo, lock }),
+    [ready, theme, toggleTheme, openRegister, scrollTo, lock],
   );
 
   return (
