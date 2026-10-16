@@ -136,8 +136,16 @@ export default function Hero() {
             Sri Sumangala College ICT Society · Cypher ’27
           </p>
           <h1 className="font-display text-[clamp(3.4rem,10.5vw,9rem)] leading-[0.92] font-bold tracking-tighter">
-            <span className="line-mask"><span data-line>Choose</span></span>
-            <span className="line-mask"><span data-line>your arena.</span></span>
+            <span className="line-mask">
+              <span data-line className="glitch" data-text="Choose">
+                Choose
+              </span>
+            </span>
+            <span className="line-mask">
+              <span data-line className="glitch" data-text="your arena.">
+                your arena.
+              </span>
+            </span>
           </h1>
           <p data-fade className="mt-8 max-w-xl text-lg leading-relaxed text-mute sm:text-xl">
             Inter-school &amp; Intra-school competitions — Video Editing, Web Design, Graphic Design, Minecraft, Word Ads &amp; AI Ads. Register on this site.

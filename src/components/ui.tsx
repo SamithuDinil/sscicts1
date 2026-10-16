@@ -100,25 +100,38 @@ export function Magnetic({ children, strength = 0.3 }: { children: ReactNode; st
   );
 }
 
-export function Tilt({ children, className = "", max = 7 }: { children: ReactNode; className?: string; max?: number }) {
+export function Tilt({
+  children,
+  className = "",
+  max = 10,
+}: {
+  children: ReactNode;
+  className?: string;
+  max?: number;
+}) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const el = ref.current;
     if (!el || !finePointer() || reducedMotion()) return;
-    gsap.set(el, { transformPerspective: 900 });
-    const rx = gsap.quickTo(el, "rotationX", { duration: 0.5, ease: "power3" });
-    const ry = gsap.quickTo(el, "rotationY", { duration: 0.5, ease: "power3" });
+    gsap.set(el, { transformPerspective: 1100, transformStyle: "preserve-3d" });
+    const rx = gsap.quickTo(el, "rotationX", { duration: 0.4, ease: "power3" });
+    const ry = gsap.quickTo(el, "rotationY", { duration: 0.4, ease: "power3" });
+    const tz = gsap.quickTo(el, "z", { duration: 0.4, ease: "power3" });
     const move = (event: PointerEvent) => {
       const rect = el.getBoundingClientRect();
-      const px = (event.clientX - rect.left) / rect.width - 0.5;
-      const py = (event.clientY - rect.top) / rect.height - 0.5;
-      ry(px * max * 2);
-      rx(-py * max * 2);
+      const px = (event.clientX - rect.left) / rect.width;
+      const py = (event.clientY - rect.top) / rect.height;
+      ry((px - 0.5) * max * 2.2);
+      rx(-(py - 0.5) * max * 2.2);
+      tz(18);
+      el.style.setProperty("--gx", `${px * 100}%`);
+      el.style.setProperty("--gy", `${py * 100}%`);
     };
     const leave = () => {
       rx(0);
       ry(0);
+      tz(0);
     };
     el.addEventListener("pointermove", move);
     el.addEventListener("pointerleave", leave);
@@ -129,7 +142,7 @@ export function Tilt({ children, className = "", max = 7 }: { children: ReactNod
   }, [max]);
 
   return (
-    <div ref={ref} className={className}>
+    <div ref={ref} className={className} style={{ transformStyle: "preserve-3d" }}>
       {children}
     </div>
   );

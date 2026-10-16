@@ -5,7 +5,7 @@ import Image from "next/image";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { arenas } from "@/lib/data";
 import { useApp } from "./Providers";
-import { ArenaIcon, Button, Heading, Magnetic } from "./ui";
+import { ArenaIcon, Button, Heading, Magnetic, Tilt } from "./ui";
 
 export default function Arenas() {
   const { openRegister, scrollTo } = useApp();
@@ -106,7 +106,10 @@ export default function Arenas() {
                   <span className="font-display text-lg font-semibold">{current.status}</span>
                   {current.date && <span className="font-display text-lg text-mute">{current.date}</span>}
                 </div>
-                <h2 className="mt-4 font-display text-[clamp(2.8rem,5.6vw,5.6rem)] leading-[0.98] font-bold tracking-tighter">
+                <h2
+                  className="mt-4 font-display text-[clamp(2.8rem,5.6vw,5.6rem)] leading-[0.98] font-bold tracking-tighter glitch"
+                  data-text={current.name}
+                >
                   {current.name}
                 </h2>
                 <p className="mt-6 max-w-xl text-xl leading-relaxed text-mute">{current.blurb}</p>
@@ -154,33 +157,46 @@ export default function Arenas() {
       </div>
 
       <div className="mx-auto max-w-7xl px-6 py-24 lg:hidden motion-reduce:block">
-        <Heading className="text-5xl sm:text-6xl">Eight ways to compete</Heading>
+        <Heading className="text-5xl sm:text-6xl">
+          <span className="glitch" data-text="Eight ways to compete">
+            Eight ways to compete
+          </span>
+        </Heading>
         <p className="mt-5 max-w-xl text-lg text-mute">
           Inter-school &amp; Intra-school arenas. Pick the one that fits your skills, or enter more than one. All registrations via this site.
         </p>
         <ul className="mt-12 grid gap-5 md:grid-cols-2">
           {arenas.map((arena) => (
-            <li
-              key={arena.id}
-              className="clip-hud relative border border-line bg-panel/70 p-7"
-              style={{ boxShadow: `inset 3px 0 0 ${arena.color}` }}
-            >
-              <div className="flex flex-wrap items-center gap-2" style={{ color: arena.color }}>
-                <ArenaIcon icon={arena.icon} className="h-5 w-5" />
-                <span className="rounded-full border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider" style={{ borderColor: `${arena.color}88` }}>
-                  {arena.category === "inter" ? "Inter" : "Intra"}
-                </span>
-                <span className="font-display text-base font-semibold">{arena.status}</span>
-                {arena.date && <span className="font-display text-base text-mute">{arena.date}</span>}
-              </div>
-              <h3 className="mt-3 font-display text-3xl font-bold tracking-tight">{arena.name}</h3>
-              <p className="mt-3 leading-relaxed text-mute">{arena.blurb}</p>
-              <div className="mt-6">
-                <Button onClick={() => openRegister(arena.id)} variant="ghost">
-                  Register for {arena.short}
-                </Button>
-              </div>
-            </li>
+            <Tilt key={arena.id} max={9}>
+              <li
+                className="cyber-card clip-hud relative border border-line bg-panel/80 p-7 backdrop-blur-sm"
+                style={{ boxShadow: `inset 3px 0 0 ${arena.color}` }}
+              >
+                <span className="tilt-glare" />
+                <div className="relative z-[2] flex flex-wrap items-center gap-2" style={{ color: arena.color }}>
+                  <ArenaIcon icon={arena.icon} className="h-5 w-5" />
+                  <span
+                    className="rounded-full border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider"
+                    style={{ borderColor: `${arena.color}88` }}
+                  >
+                    {arena.category === "inter" ? "Inter" : "Intra"}
+                  </span>
+                  <span className="font-display text-base font-semibold">{arena.status}</span>
+                </div>
+                <h3
+                  className="relative z-[2] mt-3 font-display text-3xl font-bold tracking-tight glitch"
+                  data-text={arena.name}
+                >
+                  {arena.name}
+                </h3>
+                <p className="relative z-[2] mt-3 leading-relaxed text-mute">{arena.blurb}</p>
+                <div className="relative z-[2] mt-6">
+                  <Button onClick={() => openRegister(arena.id)} variant="ghost">
+                    Register for {arena.short}
+                  </Button>
+                </div>
+              </li>
+            </Tilt>
           ))}
         </ul>
       </div>
