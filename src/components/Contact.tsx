@@ -18,11 +18,12 @@ export default function Contact() {
     const data = new FormData(form);
     setStatus("sending");
     try {
-      await sendMail({
+      const payload = {
         name: String(data.get("name")),
         email: String(data.get("email")),
         message: String(data.get("message")),
-      });
+      };
+      await sendMail(payload);
       setStatus("sent");
       form.reset();
     } catch {

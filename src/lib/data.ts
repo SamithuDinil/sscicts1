@@ -232,7 +232,7 @@ export const boards: Board[] = [
     members: [
       { name: "M. D. Venura Dewdun", role: "President" },
       { name: "P. Uthula Induwara", role: "Vice President" },
-      { name: "Shamain Bodiabadu", role: "Secretary" },
+      { name: "Shamain Bodiyabadu", role: "Secretary" },
       { name: "K. W. Malindu De Silva", role: "Vice Secretary" },
       { name: "H. Ronal Fernando", role: "Treasurer" },
       { name: "K. Praveen Hansana", role: "Vice Treasurer" },
