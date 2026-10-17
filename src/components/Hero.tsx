@@ -1,11 +1,13 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Image from "next/image";
 import { ArrowDown } from "lucide-react";
 import { gsap } from "@/lib/gsap";
+import { rinzler } from "@/lib/data";
+import RinzlerImage from "./RinzlerImage";
 import { useApp } from "./Providers";
 import Countdown from "./Countdown";
+import EventActions from "./EventActions";
 import { Button, Magnetic } from "./ui";
 
 export default function Hero() {
@@ -88,29 +90,30 @@ export default function Hero() {
           <div data-mouse-avatar className="absolute inset-0">
             <div data-avatar className="absolute right-[-8%] bottom-0 h-[72svh] sm:right-[4%] lg:right-[8%] lg:h-[92svh]">
               <div className="relative h-full animate-avatar-enter">
-                <Image
-                  src="/images/avatar.webp"
+                <RinzlerImage
+                  art={rinzler.hero}
                   alt="Rinzler — Cypher ’27 avatar"
-                  width={358}
-                  height={933}
+                  sizes="(min-width: 1024px) 60vh, 45vh"
                   priority
-                  sizes="(min-width: 1024px) 38vh, 28vh"
                   className="h-full w-auto max-w-none object-contain object-bottom opacity-60 sm:opacity-90 drop-shadow-[0_0_50px_rgba(255,159,28,0.45)] lg:opacity-100 animate-rim-light"
-                />
-                <span className="absolute top-[5%] left-[50%] h-6 w-6 -translate-x-1/2 -translate-y-1/2 animate-[visor-pulse_2.6s_ease-in-out_infinite] rounded-full bg-visor blur-xl" />
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    maskImage: "url(/images/avatar.webp)",
-                    WebkitMaskImage: "url(/images/avatar.webp)",
-                    maskSize: "100% 100%",
-                    WebkitMaskSize: "100% 100%",
-                    maskRepeat: "no-repeat",
-                    WebkitMaskRepeat: "no-repeat",
-                  }}
+                  renderMask={(src) => (
+                    <div
+                      className="absolute inset-0"
+                      style={{
+                        maskImage: `url(${src})`,
+                        WebkitMaskImage: `url(${src})`,
+                        maskSize: "100% 100%",
+                        WebkitMaskSize: "100% 100%",
+                        maskRepeat: "no-repeat",
+                        WebkitMaskRepeat: "no-repeat",
+                      }}
+                    >
+                      <div className="absolute inset-x-0 top-0 h-[12%] bg-gradient-to-b from-transparent via-visor/50 to-transparent" style={{ animation: "scan-full 4.5s linear infinite" }} />
+                    </div>
+                  )}
                 >
-                  <div className="absolute inset-x-0 top-0 h-[12%] animate-[scan_4.5s_linear_infinite] bg-gradient-to-b from-transparent via-visor/50 to-transparent" style={{ animationName: "scan-full" }} />
-                </div>
+                  <span className="absolute top-[5%] left-[50%] h-6 w-6 -translate-x-1/2 -translate-y-1/2 animate-[visor-pulse_2.6s_ease-in-out_infinite] rounded-full bg-visor blur-xl" />
+                </RinzlerImage>
               </div>
             </div>
           </div>
@@ -160,6 +163,9 @@ export default function Hero() {
           </div>
           <div data-fade className="mt-12">
             <Countdown />
+            <div className="mt-5">
+              <EventActions />
+            </div>
           </div>
         </div>
       </div>

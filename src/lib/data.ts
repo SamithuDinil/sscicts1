@@ -302,3 +302,37 @@ export const nav = [
   { href: "#gallery", label: "Gallery" },
   { href: "#contact", label: "Contact" },
 ];
+
+export const rinzler = {
+  hero: { src: "/images/rinzler/hero.png", width: 1200, height: 3120 },
+  stand: { src: "/images/rinzler/stand.png", width: 1200, height: 3120 },
+  fight: { src: "/images/rinzler/fight.png", width: 1200, height: 1480 },
+  run: { src: "/images/rinzler/run.png", width: 1200, height: 1560 },
+};
+
+export const faqs = [
+  {
+    q: "Who can register?",
+    a: "Intra-school competitions are for Sri Sumangala College students only. Inter-school competitions are open to students from other schools.",
+  },
+  {
+    q: "How and when do I register?",
+    a: "All competition registrations happen on this website between November 30 and December 11. The intra-school window opens in the first week of December and the inter-school window in the second week.",
+  },
+  {
+    q: "Which competitions are running?",
+    a: "Inter-school: Video Editing, Web Designing, Graphic Designing and Gaming (Minecraft). Intra-school: Video Editing, Word Advertisement Making, AI Advertisement Making and Graphic Designing.",
+  },
+  {
+    q: "When do the competitions and Cypher ’27 take place?",
+    a: "The competitions run from the last week of December through January. Cypher ’27, the grand finale, runs from the last week of January to February 12/19.",
+  },
+  {
+    q: "How do I get the T-shirt or wrist band?",
+    a: "Pre-orders open November 1–10 through a Google Form. The T-shirt launches November 25–30 and wrist bands are collected November 29–30.",
+  },
+  {
+    q: "How can I contact the society?",
+    a: "Email contact@sscits.com or message us on any of our social channels. You can also find us at Sri Sumangala College, Wakada, Panadura.",
+  },
+];

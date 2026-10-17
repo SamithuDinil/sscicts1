@@ -238,11 +238,11 @@ export function Button({
   disabled?: boolean;
 }) {
   const base =
-    "btn-cyber clip-hud inline-flex items-center justify-center gap-2 px-7 py-3.5 font-display text-base font-semibold transition-all duration-300 disabled:opacity-60";
+    "btn-cyber inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 font-display text-base font-semibold transition-all duration-300 disabled:opacity-60";
   const styles =
     variant === "primary"
       ? "bg-visor text-void hover:bg-bone shadow-[0_0_20px_rgba(255,159,28,0.25)]"
-      : "border border-line bg-panel/60 text-bone hover:border-visor hover:text-visor backdrop-blur";
+      : "glass text-bone hover:border-visor hover:text-visor";
   const cls = `${base} ${styles} ${className}`;
   if (href) {
     return (

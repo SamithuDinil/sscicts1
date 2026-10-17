@@ -49,7 +49,7 @@ export default function Countdown() {
       <p className="max-w-[7.5rem] text-sm leading-snug text-mute">Gaming Zone starts in</p>
       <div className="flex gap-2">
         {cells.map(([value, label]) => (
-          <div key={label} className="clip-hud min-w-[58px] border border-line bg-panel/70 px-3 py-2 text-center backdrop-blur">
+          <div key={label} className="glass min-w-[58px] rounded-2xl px-3 py-2 text-center">
             <div className="font-display text-2xl font-semibold tabular-nums text-bone">
               {String(value).padStart(2, "0")}
             </div>

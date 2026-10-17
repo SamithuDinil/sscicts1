@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X, Sun, Moon, Search } from "lucide-react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { InstagramIcon, socialIcons } from "./SocialIcons";
 import { contact, nav } from "@/lib/data";
@@ -10,7 +10,7 @@ import { useApp } from "./Providers";
 import { Magnetic } from "./ui";
 
 export default function Navbar() {
-  const { ready, theme, toggleTheme, openRegister, lock } = useApp();
+  const { ready, theme, toggleTheme, openRegister, openPalette, lock } = useApp();
   const [hidden, setHidden] = useState(false);
   const [solid, setSolid] = useState(false);
   const [open, setOpen] = useState(false);
@@ -85,6 +85,15 @@ export default function Navbar() {
 
           <div className="flex items-center gap-2 sm:gap-3">
             <button
+              onClick={openPalette}
+              className="glass hidden items-center gap-2 rounded-full px-3.5 py-2 text-sm text-mute transition-colors hover:text-bone md:flex"
+              aria-label="Open command palette"
+            >
+              <Search size={15} aria-hidden="true" />
+              <span>Search</span>
+              <kbd className="rounded border border-line px-1.5 text-[11px]">Ctrl K</kbd>
+            </button>
+            <button
               onClick={toggleTheme}
               className="grid h-10 w-10 place-items-center rounded-full border border-line text-bone transition-all duration-300 hover:border-visor hover:text-visor hover:shadow-[0_0_16px_rgba(255,159,28,0.25)]"
               aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
@@ -97,7 +106,7 @@ export default function Navbar() {
               <Magnetic strength={0.2}>
                 <button
                   onClick={() => openRegister()}
-                  className="clip-hud bg-visor px-5 py-2.5 font-display text-sm font-semibold text-void transition-colors hover:bg-bone"
+                  className="rounded-full bg-visor px-5 py-2.5 font-display text-sm font-semibold text-void transition-colors hover:bg-bone"
                 >
                   Register now
                 </button>
@@ -163,7 +172,7 @@ export default function Navbar() {
                 setOpen(false);
                 openRegister();
               }}
-              className="clip-hud bg-visor px-7 py-3.5 font-display text-lg font-semibold text-void"
+              className="rounded-full bg-visor px-7 py-3.5 font-display text-lg font-semibold text-void"
             >
               Register now
             </button>

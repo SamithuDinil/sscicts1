@@ -16,6 +16,9 @@ import Preloader from "./Preloader";
 import Cursor from "./Cursor";
 import ScrollProgress from "./ScrollProgress";
 import RegisterModal from "./RegisterModal";
+import CommandPalette from "./CommandPalette";
+import BackToTop from "./BackToTop";
+import Toast from "./Toast";
 
 type Theme = "dark" | "light";
 
@@ -24,6 +27,8 @@ type AppContext = {
   theme: Theme;
   toggleTheme: () => void;
   openRegister: (arenaId?: string) => void;
+  openPalette: () => void;
+  notify: (message: string) => void;
   scrollTo: (target: string | number) => void;
   lock: () => () => void;
 };
@@ -52,6 +57,9 @@ export default function Providers({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>("dark");
   const [lockCount, setLockCount] = useState(0);
   const [register, setRegister] = useState<{ open: boolean; arenaId?: string }>({ open: false });
+  const [paletteOpen, setPaletteOpen] = useState(false);
+  const [toast, setToast] = useState<string | null>(null);
+  const toastTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
@@ -113,7 +121,7 @@ export default function Providers({ children }: { children: ReactNode }) {
     };
   }, []);
 
-  const locked = !ready || lockCount > 0 || register.open;
+  const locked = !ready || lockCount > 0 || register.open || paletteOpen;
 
   useEffect(() => {
     const lenis = lenisRef.current;
@@ -142,19 +150,45 @@ export default function Providers({ children }: { children: ReactNode }) {
     else document.querySelector(target)?.scrollIntoView();
   }, []);
 
+  const openPalette = useCallback(() => setPaletteOpen(true), []);
+  const closePalette = useCallback(() => setPaletteOpen(false), []);
+
+  const notify = useCallback((message: string) => {
+    setToast(message);
+    if (toastTimer.current) clearTimeout(toastTimer.current);
+    toastTimer.current = setTimeout(() => setToast(null), 2600);
+  }, []);
+
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        setPaletteOpen((open) => !open);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      if (toastTimer.current) clearTimeout(toastTimer.current);
+    };
+  }, []);
+
   const onReady = useCallback(() => setReady(true), []);
 
   const openRegister = useCallback((arenaId?: string) => setRegister({ open: true, arenaId }), []);
 
   const value = useMemo(
-    () => ({ ready, theme, toggleTheme, openRegister, scrollTo, lock }),
-    [ready, theme, toggleTheme, openRegister, scrollTo, lock],
+    () => ({ ready, theme, toggleTheme, openRegister, openPalette, notify, scrollTo, lock }),
+    [ready, theme, toggleTheme, openRegister, openPalette, notify, scrollTo, lock],
   );
 
   return (
     <Ctx.Provider value={value}>
       {children}
       <ScrollProgress />
+      <BackToTop />
+      <Toast message={toast} />
+      <CommandPalette open={paletteOpen} onClose={closePalette} />
       <Cursor />
       <RegisterModal
         open={register.open}
