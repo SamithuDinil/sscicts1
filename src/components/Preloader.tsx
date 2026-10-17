@@ -193,7 +193,7 @@ export default function Preloader({ onDone }: { onDone: () => void }) {
                 stroke="rgba(255,159,28,0.75)"
                 strokeWidth="1.6"
                 strokeDasharray="2 7"
-                className="origin-center animate-[spin-slow_14s_linear_infinite_reverse]"
+                className="origin-center animate-[spin-slow_14s_linear_infinite]"
                 style={{ transformOrigin: "100px 100px", animationDirection: "reverse" }}
               />
               <circle

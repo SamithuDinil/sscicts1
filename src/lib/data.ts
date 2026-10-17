@@ -208,12 +208,72 @@ export const projects = [
   },
 ];
 
-export const team = [
-  { name: "Samithu Dinil", role: "President" },
-  { name: "Jalitha Pankaja", role: "Vice President" },
-  { name: "Malaka Fernando", role: "Secretary" },
-  { name: "Senitha Withanage", role: "Vice Secretary" },
+export type BoardMember = {
+  name: string;
+  role: string;
+  phone?: string;
+};
+
+export type Board = {
+  id: string;
+  year: string;
+  label: string;
+  current?: boolean;
+  members: BoardMember[];
+};
+
+/** Current board shows first; older boards available via tabs */
+export const boards: Board[] = [
+  {
+    id: "2026-27",
+    year: "2026/27",
+    label: "Current board",
+    current: true,
+    members: [
+      { name: "M. D. Venura Dewdun", role: "President" },
+      { name: "P. Uthula Induwara", role: "Vice President" },
+      { name: "Shamain Bodiabadu", role: "Secretary" },
+      { name: "K. W. Malindu De Silva", role: "Vice Secretary" },
+      { name: "H. Ronal Fernando", role: "Treasurer" },
+      { name: "K. Praveen Hansana", role: "Vice Treasurer" },
+      { name: "S. L. Sihath Samarawickrama", role: "Chief Organizer / Project Coordinator" },
+      { name: "Binuk Kasthuriarachchi", role: "Project Coordinator" },
+      { name: "Dineth Denuwan", role: "Project Coordinator" },
+      { name: "Pamitha Pasandul", role: "Media Coordinator" },
+      { name: "Okith Randinu", role: "Media Coordinator" },
+      { name: "Vethum Kithyuga", role: "Technical Officer" },
+    ],
+  },
+  {
+    id: "2025-26",
+    year: "2025/26",
+    label: "Previous board",
+    members: [
+      { name: "Samithu Dinil", role: "President", phone: "077-0613478" },
+      { name: "Jalitha Pankaja", role: "Vice President", phone: "070-3376570" },
+      { name: "Malaka Fernando", role: "Secretary", phone: "072-5080540" },
+      { name: "Senitha Withanage", role: "Vice Secretary", phone: "077-7618075" },
+      { name: "Nipun Nadunka", role: "Treasurer", phone: "076-8623342" },
+      { name: "Anjana Sunera", role: "Vice Treasurer", phone: "074-3403596" },
+    ],
+  },
+  {
+    id: "2024-25",
+    year: "2024/25",
+    label: "Previous board",
+    members: [
+      { name: "Yashith Kularathna", role: "President", phone: "071-6943255" },
+      { name: "Tharusha Navod", role: "Vice President", phone: "070-6013329" },
+      { name: "Nimuth Fernando", role: "Secretary", phone: "071-5909801" },
+      { name: "Sulochana Sandamayaka", role: "Vice Secretary", phone: "077-7834901" },
+      { name: "Senitha Geesilu", role: "Treasurer", phone: "071-3728727" },
+      { name: "Dilakshia Semal", role: "Vice Treasurer", phone: "071-1972016" },
+    ],
+  },
 ];
+
+/** @deprecated use boards — kept for any leftover imports */
+export const team = boards[0].members;
 
 export const gallery = [
   { src: "/images/gallery-1.jpg", alt: "Society members at an ICT event", w: 1600, h: 1200 },
